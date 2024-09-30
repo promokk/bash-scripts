@@ -1,14 +1,19 @@
 #!/bin/bash
 
 # Пример выполнения скрипта:
-# sudo bash install-postgresql.sh /{dir} \*
-# host = * - сервер принимает входящие подключения по любому ip
+# sudo bash install-postgresql.sh {dir} \*
 
 # Параметры
+# Путь к данным
 dir=$1
+# По каким ip сервер должен принимать подключения
+# host = * - сервер принимает входящие подключения по любому ip
 host=$2
+# Порт
 port=5432
+# Часовой пояс
 timezone='Europe/Moscow'
+# Путь до конфигурационного файла
 conf_file_db='/etc/postgresql/16/main/postgresql.conf'
 
 # Настройка репозитория

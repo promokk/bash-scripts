@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # Пример выполнения скрипта:
-# sudo bash install-docker.sh /{dir}
+# sudo bash install-docker.sh {dir}
 
 # Параметры
+# Путь к данным
 dir=$1
+# Путь до конфигурационного файла
 conf_file='/etc/docker/daemon.json'
 
 # Обновляем список пакетов

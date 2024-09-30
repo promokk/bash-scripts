@@ -1,7 +1,11 @@
 #!/bin/bash
 
 # Пример выполнения скрипта:
-# sudo bash install-prometheus.sh
+# sudo bash install-prometheus.sh {dir}
+
+# Параметры
+# Путь к данным
+dir=$1
 
 # Скачиваем (версии -> https://prometheus.io/download/)
 curl -LO https://github.com/prometheus/prometheus/releases/download/v2.46.0/prometheus-2.46.0.linux-amd64.tar.gz
@@ -15,14 +19,13 @@ useradd --no-create-home --shell /usr/sbin/nologin prometheus
 # Установка prometheus
 # Создаём папки и копируем файлы
 mkdir /etc/prometheus
-mkdir /var/lib/prometheus
+mkdir $dir
 cp -vi prometheus-*.linux-amd64/prometheus /usr/local/bin
 cp -vi prometheus-*.linux-amd64/promtool /usr/local/bin
-cp -rvi prometheus-*.linux-amd64/prometheus.yml /etc/prometheus/
-cp -rvi prometheus-*.linux-amd64/console_libraries /etc/prometheus/
-cp -rvi prometheus-*.linux-amd64/consoles /etc/prometheus/
-chown -Rv prometheus: /usr/local/bin/promtool /etc/prometheus/ /var/lib/prometheus/
-chown -Rv prometheus: /usr/local/bin/prometheus /etc/prometheus/ /var/lib/prometheus/
+cp -rvi prometheus-*.linux-amd64/prometheus.yml /etc/prometheus
+cp -rvi prometheus-*.linux-amd64/console_libraries /etc/prometheus
+cp -rvi prometheus-*.linux-amd64/consoles /etc/prometheus
+chown -Rv prometheus: /usr/local/bin/prometheus /usr/local/bin/promtool /etc/prometheus $dir
 
 # Настраиваем сервис
 cat << EOF > /etc/systemd/system/prometheus.service
@@ -37,7 +40,7 @@ Group=prometheus
 Type=simple
 ExecStart=/usr/local/bin/prometheus \
 --config.file /etc/prometheus/prometheus.yml \
---storage.tsdb.path /var/lib/prometheus/ \
+--storage.tsdb.path $dir \
 --web.console.templates=/etc/prometheus/consoles \
 --web.console.libraries=/etc/prometheus/console_libraries
 ExecReload=/bin/kill -HUP $MAINPID

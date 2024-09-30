@@ -1,12 +1,13 @@
 #!/bin/bash
 
 # Пример выполнения скрипта:
-# sudo bash install-victoriametrics.sh /{dir}
+# sudo bash install-victoriametrics.sh {dir}
 
 # Параметры
+# Путь к данным
 dir=$1
 
-# Скачиваем (Версии -> https://github.com/VictoriaMetrics/VictoriaMetrics/releases)
+# Скачиваем (версии -> https://github.com/VictoriaMetrics/VictoriaMetrics/releases)
 curl -LO https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.101.0/victoria-metrics-linux-amd64-v1.101.0.tar.gz
 
 # Распаковка архивов
