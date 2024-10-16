@@ -9,3 +9,4 @@
 * install-victoriametrics.sh
 * install-prometheus.sh
 * install-process-exporter.sh
+* install-node-exporter.sh

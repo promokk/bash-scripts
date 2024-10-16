@@ -16,7 +16,6 @@ tar xzvf prometheus-*.t*gz
 # Добавляем пользователя
 useradd --no-create-home --shell /usr/sbin/nologin prometheus
 
-# Установка prometheus
 # Создаём папки и копируем файлы
 mkdir /etc/prometheus
 mkdir $dir

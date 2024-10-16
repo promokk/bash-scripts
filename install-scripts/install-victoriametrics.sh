@@ -16,11 +16,10 @@ tar zxf victoria-metrics-linux-amd64-*.tar.gz -C /usr/local/bin/
 # Добавляем пользователей
 useradd --no-create-home --shell /usr/sbin/nologin victoria_metrics
 
-# Установка victoria-metrics
-# Создаем каталог для идентификатора процесса:
+# Создаем каталог для идентификатора процесса
 mkdir -p /run/victoriametrics
 
-# Зададим в качестве владельца для созданных каталогов нового пользователя (victoria_metrics):
+# Меняем владельца на нового пользователя (victoria_metrics)
 chown victoria_metrics:victoria_metrics $dir /run/victoriametrics
 
 # Настраиваем сервис
