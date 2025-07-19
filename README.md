@@ -10,3 +10,9 @@
 * install-prometheus.sh
 * install-process-exporter.sh
 * install-node-exporter.sh
+
+---
+## Other-scripts
+Другие скрипты:
+* deleteFile.sh
+* sshKeyConnect.sh
